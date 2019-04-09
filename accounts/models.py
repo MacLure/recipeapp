@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+class Accounts(models.Model):
+    name = models.CharField(max-length=120)
+    email = models.CharField(max-length=120)
+    password = models.CharField(max-length=120)
