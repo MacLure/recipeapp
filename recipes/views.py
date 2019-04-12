@@ -29,6 +29,12 @@ def recipe_details_view(request, recipe_id):
 
 def recipe_create_view(request):
     form = NewRecipeForm()
+    if request.method == "POST":
+        form = NewRecipeForm(request.POST)
+        if form.is_valid():
+            Recipe.objects.create(**form.cleaned_data)
+        else:
+            print(form.errors)
     context = {
         "form": form
     }
