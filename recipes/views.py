@@ -24,3 +24,7 @@ def recipe_details_view(request, recipe_id):
     }
 
     return render(request, 'recipe_details.html', context)
+
+
+def recipe_create_view(request):
+    return render(request, 'recipe_create.html')
