@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from .models import Recipe
+from .forms import NewRecipeForm
 
 
 def recipes_list_view(request):
@@ -27,4 +28,8 @@ def recipe_details_view(request, recipe_id):
 
 
 def recipe_create_view(request):
-    return render(request, 'recipe_create.html')
+    form = NewRecipeForm()
+    context = {
+        "form": form
+    }
+    return render(request, 'recipe_create.html', context)
