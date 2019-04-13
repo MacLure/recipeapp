@@ -6,6 +6,7 @@
 <ul>
   {% for recipe in recipe_list %}
   <li>
+    <img style="width:100px;" src="{{ recipe.image.url }}" />
     <a href="{{ recipe.id }}">{{ recipe.name }}</a>
   </li>
   {% endfor %}
