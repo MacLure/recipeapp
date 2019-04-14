@@ -10,7 +10,7 @@ from .views import (
 app_name = 'recipes'
 
 urlpatterns = [
-    path('', recipes_list_view),
+    path('', recipes_list_view, name="list"),
     path('<int:recipe_id>/', recipe_details_view, name="recipe"),
     path('new/', recipe_create_view, name="recipe_create")
 
