@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Recipe
 from .forms import NewRecipeForm
 from django.contrib.auth.decorators import login_required
@@ -35,6 +35,8 @@ def recipe_create_view(request):
         form = NewRecipeForm(request.POST)
         if form.is_valid():
             Recipe.objects.create(**form.cleaned_data)
+            return redirect('recipes:list')
+
         else:
             print(form.errors)
     context = {
