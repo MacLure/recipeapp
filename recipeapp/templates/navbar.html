@@ -1,8 +1,9 @@
 <nav>
   NAVBAR
   <ul>
-    <li>Logout</li>
+    <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+    <li>Login</a></li>
     <li>Profile</li>
-    <li>Recipes</li>
+    <li><a href="{% url 'recipes:list' %}">Recipes</a></li>
   </ul>
 </nav>

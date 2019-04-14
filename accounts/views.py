@@ -19,17 +19,3 @@ def signup_view(request):
         form = UserCreationForm()
 
     return render(request, "signup.html", {"form": form})
-
-
-# def recipe_create_view(request):
-#     form = NewRecipeForm()
-#     if request.method == "POST":
-#         form = NewRecipeForm(request.POST)
-#         if form.is_valid():
-#             Recipe.objects.create(**form.cleaned_data)
-#         else:
-#             print(form.errors)
-#     context = {
-#         "form": form
-#     }
-#     return render(request, 'recipe_create.html', context)
