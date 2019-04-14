@@ -3,13 +3,15 @@ from datetime import datetime
 from recipes.models import Recipe
 
 
-# class NewRecipeForm(ModelForm):
+class NewRecipeForm(forms.ModelForm):
+    class Meta:
+        model = Recipe
+        fields = ['name', 'ingredients', 'instructions']
+
+
+# class NewRecipeForm(forms.ModelForm):
 #     class Meta:
 #         model = Recipe
-#         fields = ['name', 'ingredients', 'instructions']
-
-
-class NewRecipeForm(forms.Form):
-    name = forms.CharField()
-    ingredients = forms.CharField()
-    instructions = forms.CharField()
+#     name = forms.CharField()
+#     ingredients = forms.CharField()
+#     instructions = forms.CharField()

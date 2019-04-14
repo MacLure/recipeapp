@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Recipe
 from .forms import NewRecipeForm
 from django.contrib.auth.decorators import login_required
+from . import forms
 
 
 def recipes_list_view(request):
@@ -30,16 +31,26 @@ def recipe_details_view(request, recipe_id):
 
 @login_required(login_url="/accounts/login/")
 def recipe_create_view(request):
-    form = NewRecipeForm()
+    # form = NewRecipeForm()
     if request.method == "POST":
-        form = NewRecipeForm(request.POST)
+        # form = NewRecipeForm(request.POST)
+        form = forms.NewRecipeForm(request.POST, request.FILES)
         if form.is_valid():
-            Recipe.objects.create(**form.cleaned_data)
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
             return redirect('recipes:list')
+    else:
+        form = forms.NewRecipeForm()
+        return render(request, 'recipe_create.html', {'form': form})
 
-        else:
-            print(form.errors)
-    context = {
-        "form": form
-    }
-    return render(request, 'recipe_create.html', context)
+    #     if form.is_valid():
+    #         Recipe.objects.create(**form.cleaned_data)
+    #         return redirect('recipes:list')
+
+    #     else:
+    #         print(form.errors)
+    # context = {
+    #     "form": form
+    # }
+    # return render(request, 'recipe_create.html', context)
