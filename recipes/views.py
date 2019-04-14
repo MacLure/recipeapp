@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from .models import Recipe
 from .forms import NewRecipeForm
+from django.contrib.auth.decorators import login_required
 
 
 def recipes_list_view(request):
@@ -27,6 +28,7 @@ def recipe_details_view(request, recipe_id):
     return render(request, 'recipe_details.html', context)
 
 
+@login_required(login_url="/accounts/login/")
 def recipe_create_view(request):
     form = NewRecipeForm()
     if request.method == "POST":
