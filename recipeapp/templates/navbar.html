@@ -1,8 +1,7 @@
 <nav>
   NAVBAR
   <ul>
-    <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
-    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+    {% if user.is_authenticated %}
     <li>
       <form
         class="logout_link"
@@ -13,6 +12,10 @@
         <button type="submit">Logout</button>
       </form>
     </li>
+    {% else %}
+    <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+    {% endif %}
     <li>Profile</li>
     <li><a href="{% url 'recipes:list' %}">Recipes</a></li>
     <li><a href="{% url 'recipes:recipe_create' %}">New Recipe</a></li>
