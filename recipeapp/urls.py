@@ -5,9 +5,10 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from recipeapp import views
+from recipes import views as recipe_views
 
 urlpatterns = [
-    path('', views.home_view, name="home"),
+    path('', recipe_views.recipes_list_view, name="home"),
     path('admin/', admin.site.urls),
     path('recipes/', include('recipes.urls')),
     path('accounts/', include('accounts.urls')),
