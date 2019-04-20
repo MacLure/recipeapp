@@ -1,0 +1,18 @@
+li {
+  list-style: none;
+}
+
+nav {
+  justify-self: end;
+}
+
+nav button {
+  background: none;
+  cursor: pointer;
+  border: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 20px;
+}
